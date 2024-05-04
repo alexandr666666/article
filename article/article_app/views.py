@@ -1,4 +1,6 @@
-from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from .models import *
 
-def index(request):
-    return HttpResponse("Hello world")
+def show_main_page(request):
+    article = Article.objects.all()
+    return render(request, 'main-page.html', {'article': article})

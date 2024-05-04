@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Главная страница</title>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <h1>Опубликованные статьи</h1>
+
+    {% for i in article %}
+    <h2>{{ i.title }}</h2>
+    <p>{{ i.text }}</p>
+    <p>Опубликовано: {{ i.pub_date }}</p>
+    {% endfor %}
+  </body>
+</html>
