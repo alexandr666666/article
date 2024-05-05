@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Страница для добавления комментариев</title>
+    <meta charset="utf-8" />
+    <link
+      type="text/css"
+      href="{% static 'article_app/css/add-comment.css' %}"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>Добавить комментарий</h1>
+
+    {% for i in comment %}
+    <h2>{{ i.author }}</h2>
+    <p>{{ i.text }}</p>
+    <p>{{ i.pub_date }}</p>
+    {% endfor %}
+
+    <form method="post">
+      {% csrf_token %} {{ form.as_p }}
+      <button type="submit">Добавить</button>
+    </form>
+  </body>
+</html>

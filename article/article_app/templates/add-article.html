@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Страница для добавления статей</title>
+    <meta charset="utf-8" />
+    <link
+      type="text/css"
+      href="{% static 'article_app/css/main-page.css' %}"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>Добавить статью</h1>
+
+    <form action="{% url 'Страница для добавления статей' %}" method="post">
+      {% csrf_token %} {{ form.as_p }}
+      <button type="submit">Добавить</button>
+    </form>
+  </body>
+</html>
