@@ -9,6 +9,9 @@ class Article(models.Model):
     text = models.TextField('')
     pub_date = models.DateField(default=timezone.now)
 
+    def __str__(self):
+        return self.title
+
     def was_published_recently(self):
         return self.pub_date >= (timezone.now() - timedelta(days=7))
 
@@ -23,8 +26,8 @@ class Comment(models.Model):
     text = models.CharField('', max_length=200, default='')
     pub_date = models.DateField(default=timezone.now)
 
-    def __repr__(self):
-        return self.article
+    def __str__(self):
+        return self.article.title
     
     class Meta:
         verbose_name = 'Комментарий'

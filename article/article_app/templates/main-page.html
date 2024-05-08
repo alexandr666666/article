@@ -1,34 +1,28 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Главная страница</title>
-    <meta charset="utf-8" />
-    <link
-      type="text/css"
-      href="{% static 'article_app/css/add-article.css' %}"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <h1>Опубликованные статьи</h1>
+{% extends 'base.html' %} {% load static %}
 
-    {% for i in article %}
-    <h2>{{ i.title }}</h2>
-    <p>{{ i.text }}</p>
-    <p>Опубликовано: {{ i.pub_date }}</p>
-    <form action="{% url 'Страница для добавления комментариев' %}">
-      <button type="submit">Добавить комментарий</button>
-    </form>
+<title>Главная страница</title>
+<meta charset="utf-8" />
+<link
+  type="text/css"
+  href="{% static 'article_app/css/add-article.css' %}"
+  rel="stylesheet"
+/>
+{% block content %}
 
-    {% endfor %}
-    <p></p>
+<h1>Опубликованные статьи</h1>
 
-    <form action="{% url 'Страница для добавления статей' %}">
-      <button type="submit">Добавить статью</button>
-    </form>
-  </body>
-  {% comment %}
-  <script src="{% static 'article_app/js/main-page.js' %}"></script>
-  {% endcomment %}
-</html>
+{% for i in article %}
+<h2>{{ i.title }}</h2>
+<p>{{ i.text }}</p>
+<p>Опубликовано: {{ i.pub_date }}</p>
+<form action="{% url 'Страница для добавления комментариев' %}">
+  <button type="submit">Добавить комментарий</button>
+</form>
+
+{% endfor %}
+<p></p>
+
+<form action="{% url 'Страница для добавления статей' %}">
+  <button type="submit">Добавить статью</button>
+</form>
+{% endblock %}

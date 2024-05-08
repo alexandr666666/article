@@ -2,7 +2,7 @@ from django.forms import ModelForm
 from .models import *
 from django import forms
 
-class AddArticle(ModelForm):
+class ArticleForm(ModelForm):
     class Meta:
         model = Article
         fields = ['author', 'title', 'text', 'pub_date']
@@ -10,7 +10,7 @@ class AddArticle(ModelForm):
             'title': forms.TextInput(attrs={'placeholder': 'Название статьи'})
         }
 
-class AddComment(ModelForm):
+class CommentForm(ModelForm):
     class Meta:
         model = Comment
         fields = ["article", 'author', 'text', 'pub_date']

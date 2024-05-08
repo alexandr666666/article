@@ -8,21 +8,21 @@ def show_main_page(request):
 
 def add_article(request):
     if request.method == 'POST':
-        form = AddArticle(request.POST)
+        form = ArticleForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('Главная страница')
     else:
-        form = AddArticle()
+        form = ArticleForm()
     return render(request, 'add-article.html', {'form': form})
 
 def add_comment(request):
     if request.method == 'POST':
-        form = AddComment(request.POST)
+        form = CommentForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('Страница для добавления статей')
     else:
-        form = AddComment()
+        form = CommentForm()
     comment = Comment.objects.all()
     return render(request, 'add-comment.html', {'form': form, 'comment': comment})

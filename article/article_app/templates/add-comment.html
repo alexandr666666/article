@@ -1,4 +1,4 @@
-{% load static %}
+{% extends 'base.html' %} {% load static %}
 <!DOCTYPE html>
 <html>
   <head>
@@ -11,6 +11,7 @@
     />
   </head>
   <body>
+    {% block content %}
     <h1>Добавить комментарий</h1>
 
     {% for i in comment %}
@@ -23,5 +24,6 @@
       {% csrf_token %} {{ form.as_p }}
       <button type="submit">Добавить</button>
     </form>
+    {% endblock %}
   </body>
 </html>
