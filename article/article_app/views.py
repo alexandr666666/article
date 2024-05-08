@@ -3,7 +3,7 @@ from .models import *
 from .forms import *
 
 def show_main_page(request):
-    article = Article.objects.all()
+    article = Article.objects.order_by('-pub_date')[:5]
     return render(request, 'main-page.html', {'article': article})
 
 def add_article(request):
